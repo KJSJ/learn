@@ -1,0 +1,41 @@
+.no-posts-here {
+	text-allign:center;
+}
+
+.post {
+	border:3px solid black;
+	border-radius: 5px;
+}
+
+.post .post__meta{
+	font-weight: bold;
+	padding-bottom: 19px;
+	margin:15px;
+	font-family: 'Open Sans', Bold;
+}
+
+.post .post__meta a:hover {
+	text-decoration: none;
+}
+
+.navbar-form .navbar-default{
+	
+
+}
+
+.btn-add-new-post {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+}
+
+#query {
+	background-color: white;
+	margin-top: 14px;
+	border-radius: 2px;
+}
+
+.profilepic {
+	margin-top: 12px;
+	border-radius: 2px;
+}
