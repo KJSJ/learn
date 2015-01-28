@@ -12,7 +12,6 @@ from fbpage.views import PageView
 router = routers.SimpleRouter()
 router.register(r'accounts', AccountViewSet)
 router.register(r'posts', PostViewSet)
-router.register(r'fbpage', PageView)
 
 accounts_router = routers.NestedSimpleRouter(
 	router, r'accounts', lookup='accounts'
@@ -44,7 +43,7 @@ urlpatterns = patterns(
 
     url(r'^api/v1/social/', include('social.apps.django_app.urls', namespace='social')),
 
-    url(r'^api/v1/fbpage/$', PageView.as_view() ,name = fbpage ),
+    url(r'^api/v1/fbpage/$', PageView.as_view() ,name='fbpage'),
 
     # url(r'^sociallogin/', 'fbpage.views.social_register'),
 

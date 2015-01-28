@@ -21,17 +21,33 @@ class PageView(APIView):
 
 	def post(self, request,format=None):
 		tempo = request.body
-		data = json.loads(tempo.decode())
+		print (tempo.decode())
+		print (type(tempo.decode()))
+		# print (json.loads(tempo.decode()))
+		# print (request.body)
+		data = tempo.decode()
 
-		keyword = data.get('keyword', None)
+		keyword = tempo.decode()
+		print (keyword)
 
 		token = request.user.access_token
+		print (token)
 		graph = facebook.GraphAPI(token, version='2.2')
 		pagequery = graph.request("search",{'q': keyword,'type':'page'})
+		result = pagequery['data']
 
-		print (pagequery['name'])
-		
-		return Response(pagequery)
+		# def print_result(page):
+		# 	print(page['name'])
+
+		# while True:
+		# 	try:
+		# 		[print_result(page=page) for page in pagequery['data']]
+		# 		# Attempt to make a request to the next page of data, if it exists.
+		# 		posts = requests.get(pagequery['paging']['next']).json()
+		# 	except KeyError:
+		# 		break
+
+		return Response(result)
 
 
 	# def some_action(page):

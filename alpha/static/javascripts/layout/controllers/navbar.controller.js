@@ -23,8 +23,17 @@
 			Fbpage.search(vm.keyword, searchPass, searchFail);
 		}
 
+		function isEmpty(obj) {
+			for (var prop in obj) {
+				if(obj.hasOwnProperty(prop))
+					return false;
+			}
+			return true;
+		}
+
 		function searchPass(data){
-			vm.results = data.results;
+			vm.results = data;
+			console.log(vm.results)
 			if(isEmpty(vm.results)){
 				vm.results = null;
 			}
