@@ -14,7 +14,7 @@ def some_action(page):
 
 # You'll need an access token here to do anything.  You can get a temporary one
 # here: https://developers.facebook.com/tools/explorer/
-access_token = 'CAACEdEose0cBAIZCenPJ0pdWAbevWFiUNybEiN6ttQhTfHXPsEQu1Ntu4bzQEV36FFKc6aPDvYAHsmmcCHfHBVlc16ZCMf1keiobZCGM9LoV7fF4KKlANIZClqkvq33q3MZABEzBqt0QMMjgrEuZBLGOuvcNZA6jv32E12ELEILcQLqk0EvS1clLDNTpaa2eKe7SGppyDxvTgzOGjpoqsPy'
+access_token = 'CAACEdEose0cBABwpK9hDfPVofSvpY2F8ZA5ZA1J2UTckS7oXDF5uAZA2izxZBgeoGoPiz5OoFI4iNCJRcerm9kP77a6bu2adZBwVjkXFqTbW7R7AT1BbOrQ6rvehOpMKuBSAc1fB7LNe8Wc1lZC3OUZBXZCvygEH6aZCwggIeZAaR8AIIJC0iPA5klpZBXySUOI8j1BrmW5QPNPUUa4ZA205yTpO'
 # Look at Bill Gates's profile for this example by using his Facebook id.
 # user = 'BillGates'
 

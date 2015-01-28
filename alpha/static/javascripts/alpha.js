@@ -5,7 +5,9 @@
 		.module('alpha', [
 			'alpha.authentication',
 			'alpha.config', 
+			// 'alpha.accounts', //remove this one to show setting page
 			'alpha.posts',
+			'alpha.fbpage',
 			'alpha.layout',
 			'alpha.utils',
 			'ngRoute'

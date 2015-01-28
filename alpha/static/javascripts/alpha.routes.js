@@ -32,6 +32,10 @@
 			controller: 'AccountSettingsController',
 			controllerAs: 'vm',
 			templateUrl: '/static/templates/accounts/settings.html'
+		}).when('/fbpage', {
+			controller: 'NavbarController',
+			controlelrAs: 'vm',
+			templateUrl: '/static/templates/layout/result.html'
 		}).otherwise('/');
 	}
 })();

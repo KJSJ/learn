@@ -5,9 +5,9 @@
 		.module('alpha.layout.controllers')
 		.controller('NavbarController', NavbarController);
 
-	NavbarController.$inject = ['$scope', 'Authentication', 'Fbpage', 'Snackbar'];
+	NavbarController.$inject = ['$scope', 'Authentication', 'Snackbar', 'Fbpage'];
 
-	function NavbarController($scope, Authentication, Fbpage, Snackbar) {
+	function NavbarController($scope, Authentication, Snackbar, Fbpage) {
 		var vm = this;
 		vm.search = searchQuery;
 		vm.keyword = '';

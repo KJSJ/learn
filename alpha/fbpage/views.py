@@ -7,21 +7,32 @@ from django.shortcuts import render
 from rest_framework import permissions
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 from fbpage.models import Pages
 from fbpage.serializers import PageSerializer
-from fbpage.permissions import 
 
-class Page(APIView):
+from authentication.models import Account
 
-	social_user = request.user.social_auth.filter(provider='facebook',).first()
+class PageView(APIView):
 
-	if social_user:
+	# def get(self, request):
+	# 	request.user.
+
+	def post(self, request,format=None):
+		tempo = request.body
+		data = json.loads(tempo.decode())
+
+		keyword = data.get('keyword', None)
+
+		token = request.user.access_token
+		graph = facebook.GraphAPI(token, version='2.2')
+		pagequery = graph.request("search",{'q': keyword,'type':'page'})
+
+		print (pagequery['name'])
 		
+		return Response(pagequery)
 
-
-	def list (self, request):
-		queryset = Page.objects.all()
 
 	# def some_action(page):
 	#     print(page['name','id'] + ' ' + page['id'] )

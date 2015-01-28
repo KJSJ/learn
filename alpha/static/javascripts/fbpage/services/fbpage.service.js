@@ -15,7 +15,8 @@
 
 	return Fbpage;
 
-	function search(keyword, successfn, errorfn) {
-		return $http.get('/api/v1/fbpage/?search='+ keyword).success(successfn).error(errorfn);
+		function search(keyword, successfn, errorfn) {
+			return $http.post('/api/v1/fbpage/?search='+ keyword).success(successfn).error(errorfn);
+		}
 	}
 })();

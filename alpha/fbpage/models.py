@@ -2,12 +2,14 @@ from django.db import models
 
 # Create your models here.
 class Pages(models.Model):
-	page_Name = models.TextField()
+	page_ID = models.IntegerField(unique=True)
+	page_name = models.TextField()
 	page_type = models.TextField()
-	page_Location = models.TextField()
-	page_Description = models.TextField()
-	page_Likes = models.IntegerField()
+	page_location = models.TextField()
+	page_description = models.TextField()
+	page_likes = models.IntegerField()
 	page_URL = models.URLField()
+	keyword = models.TextField()
 
 	def __unicode__(self):
-		return self.page_Name
+		return self.page_ID
