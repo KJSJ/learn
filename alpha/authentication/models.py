@@ -39,7 +39,9 @@ class Account(AbstractBaseUser):
 	tagline = models.CharField(max_length=140, blank=True)
 	profile_picture = models.TextField(blank=True)
 	access_token = models.CharField(max_length=140,blank=True)
+	phone_number = models.CharField(max_length=12, blank = True)
 
+	address = models.TextField(blank = True)
 	is_admin = models.BooleanField(default=False)
 
 	created_at = models.DateTimeField(auto_now_add=True)

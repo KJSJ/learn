@@ -7,14 +7,14 @@ def some_action(page):
     # post's message (post['message']) or the post's picture (post['picture']).
     # In this implementation we just print the post's created time.
     # """
-    print(page['name'] + ' ' + page['id'] )
+    print(page['name'] + ' ' + page['likes'] )
 
 # def pp(o):
 	# print (json.dumps(o, indent=1))
 
 # You'll need an access token here to do anything.  You can get a temporary one
 # here: https://developers.facebook.com/tools/explorer/
-access_token = 'CAACEdEose0cBABwpK9hDfPVofSvpY2F8ZA5ZA1J2UTckS7oXDF5uAZA2izxZBgeoGoPiz5OoFI4iNCJRcerm9kP77a6bu2adZBwVjkXFqTbW7R7AT1BbOrQ6rvehOpMKuBSAc1fB7LNe8Wc1lZC3OUZBXZCvygEH6aZCwggIeZAaR8AIIJC0iPA5klpZBXySUOI8j1BrmW5QPNPUUa4ZA205yTpO'
+access_token = 'CAANMJZCvoREIBAGX4yf3JVBYrjTvNnSJdhWZCmgxvcQlZCwTb79ome3n7sp7ZB2piAOn715KoZBT1zoZA6uRU0kNo7TlRpZC7hCZA5f2vaAtR1ZBRuDk7IvKAmN5yENuirenHUkeEyEX9zJBrTWNxbULZA21T3XKBd78aDGWYjOFWMckZCd907YAbXY8ELZCWe9fm3UuZCfiXHzZBistFO9la6v9pr'
 # Look at Bill Gates's profile for this example by using his Facebook id.
 # user = 'BillGates'
 
@@ -44,7 +44,7 @@ while True:
 
 # ACCESS_TOKEN = 'CAANMJZCvoREIBAH1vd4DBTNEjEnsNUT0mIGmZCtZAnPKn7UlrBTO9kRyalu92fqZCZB59RyCy0MNhNuWX1ZBKC7VsgpoXzQZC8obZAdmD2EdsROWH7NnZC6ZCYZAknkPjpG32ySsUBf8ZCB7RaVkt4YcCEwyr90XfEerOzuMjrZBqu6GgXX908pDXEI1qYzrzbogpoZCbmKebS39RtQylXgIBCgvqtZA0m23ogrTE0ZD'
 
-# base_url = 'https://graph.facebook.com/me'
+base_url = 'https://graph.facebook.com/'
 
 # fields = 'id,name'
 

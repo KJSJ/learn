@@ -1,14 +1,11 @@
 <div class="row">
 	<div class="col md-4 ">
-		<div class="col md-offset-1">
-			<img src="https://graph.facebook.com/643506762371235/picture" /> 
-		</div>
 		<div class="well col-md-offset-4" ng-show="vm.account">
-			<img ng-src="{{ vm.account.profile_picture }}" />
 			<form role="form" class="settings" ng-submit="vm.update()">
+
 				<div class="form-group">
-					<label for="settings__email">Email</label>
-					<input type="text" class="form-control" id="settings__email" ng-model="vm.account.email" placeholder="ex. john@example.com" />
+					<label for="settings__email">Username</label>
+					<input type="text" class="form-control" id="settings__email" ng-model="" placeholder="Please enter your username" />
 				</div>
 
 				<div class="form-group">
@@ -22,18 +19,34 @@
 				</div>
 
 				<div class="form-group">
-					<label for="seetings__username">Username</label>
-					<input type="text" class="form-control" id="settings__username" ng-model="vm.account.username" placeholder="Please enter your username"/>
+					<label for="seetings__username">First Name</label>
+					<input type="text" class="form-control" id="settings__username" ng-model="" placeholder="Please enter your firstname"/>
 				</div>
 
 				<div class="form-group">
-					<label for="settings__tagline">Tagline</label>
-					<textarea class="form-control" id="settings__tagline" ng-model="vm.account.tagline" placeholder="ex. This is not google plus"/>
+					<label for="seetings__username">Last Name</label>
+					<input type="text" class="form-control" id="settings__username" ng-model="" placeholder="Please enter your lastname"/>
 				</div>
+
+				<div class="form-group">
+					<label for="seetings__username">Phone Number</label>
+					<input type="text" class="form-control" id="settings__username" ng-model="" placeholder="Ex: 012-3456789"/>
+				</div>
+
+				<div class="form-group">
+					<label for="settings__tagline">Address</label>
+					<textarea class="form-control" id="settings__tagline" ng-model="" placeholder="Please enter your address"/>
+				</div>
+
+				<div class="form-group">
+					<label for="settings__email">Email</label>
+					<input type="text" class="form-control" id="settings__email" ng-model="vm.account.email" placeholder="Please enter your email address" />
+				</div>
+
 
 				<div class="form-group">
 					<button type="submit" class="btn btn-primary">Submit</button>
-					<button type="button" class="btn btn-danger pull-right" ng-click="vm.account.destroy()">Delete Account</button>
+					<button type="button" class="btn btn-danger pull-right" ng-click="vm.account.destroy()">Reset</button>
 				</div>
 			</form>
 		</div>

@@ -19,13 +19,6 @@ accounts_router = routers.NestedSimpleRouter(
 
 accounts_router.register(r'posts', AccountPostsViewSet)
 
-def abc(request):
-	social_user = request.user.social_auth.filter(provider='facebook', user=request.user.id).first()
-	print (social_user.extra_data['access_token'])
-	print (request.user.username)
-
-	return Response(social_user.extra_data['access_token'])
-
 urlpatterns = patterns(
 	'',
   
@@ -38,8 +31,6 @@ urlpatterns = patterns(
     url(r'^api/v1/auth/login/$', LoginView.as_view(), name='login'),
 
     url(r'^api/v1/auth/logout/$', LogoutView.as_view(), name='logout'),
-
-    url(r'^api/v1/testing/', abc, name='abc'),
 
     url(r'^api/v1/social/', include('social.apps.django_app.urls', namespace='social')),
 

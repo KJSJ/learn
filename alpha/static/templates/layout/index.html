@@ -5,14 +5,15 @@
 		<div class="col-sm-12">
 			<div class="post" ng-repeat = "i in vm.show">
 				<div class="post__meta">
-					<span style="font-size:3em" ><a ng-href="{{i.link}}">{{i.name}}<br/></a></span>
+					<span style="font-size:3em" ><a ng-href="/page/{{i.id}}">{{i.name}}<br/></a></span>
 					<div class="fb-like" ng-href="{{i.link}}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div><br/>
 					<a ng-repeat="j in i.category_list track by $index" ng-href="https://www.facebook.com/{{j.id}}">Facebook Category : {{j.name}} </a><br/>
 					<div >About this page:<br/> {{i.about}}<br/></div>
 					<img ng-src="{{i.picture}}" width="200"/>
+					<a ng-href="{{i.link}}"><img src="/static/Find.png" class="find" width="180" /></a>
 				</div>
 			</div>
-		</div>
+		</div> 
 	</div>
 </div>
 

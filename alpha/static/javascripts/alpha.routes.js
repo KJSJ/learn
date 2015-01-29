@@ -32,10 +32,14 @@
 			controller: 'AccountSettingsController',
 			controllerAs: 'vm',
 			templateUrl: '/static/templates/accounts/settings.html'
-		}).when('/fbpage', {
-			controller: 'NavbarController',
-			controlelrAs: 'vm',
+		}).when('/search/:keyword', {
+			controller: 'GraphSearchController',
+			controllerAs: 'vm',
 			templateUrl: '/static/templates/layout/result.html'
+		}).when('/page/:id', {
+			controller: 'PageDetailController',
+			controllerAs: 'vm',
+			templateUrl: '/static/templates/fbpage/page.html'
 		}).otherwise('/');
 	}
 })();

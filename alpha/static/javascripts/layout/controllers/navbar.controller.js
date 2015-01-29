@@ -5,42 +5,26 @@
 		.module('alpha.layout.controllers')
 		.controller('NavbarController', NavbarController);
 
-	NavbarController.$inject = ['$scope', 'Authentication', 'Snackbar', 'Fbpage'];
+	NavbarController.$inject = ['$scope', '$location','Authentication', 'Snackbar', 'Fbpage'];
 
-	function NavbarController($scope, Authentication, Snackbar, Fbpage) {
+	function NavbarController($scope, $location, Authentication, Snackbar, Fbpage) {
 		var vm = this;
-		vm.search = searchQuery;
+	
+		vm.redirect = redirect;
 		vm.keyword = '';
 		vm.logout = logout;
-		vm.results = null;
+		vm.fblogin = fblogin;
 
 		function logout(){
 			Authentication.logout();
 		}
 
-		function searchQuery(){
-			if (!vm.keyword) return;
-			Fbpage.search(vm.keyword, searchPass, searchFail);
+		function redirect(){
+			$location.path('/search/'+vm.keyword);
 		}
 
-		function isEmpty(obj) {
-			for (var prop in obj) {
-				if(obj.hasOwnProperty(prop))
-					return false;
-			}
-			return true;
-		}
-
-		function searchPass(data){
-			vm.results = data;
-			console.log(vm.results)
-			if(isEmpty(vm.results)){
-				vm.results = null;
-			}
-		}
-
-		function searchFail(data){
-			Snackbar.error('Searching Error!');
+		function fblogin(){
+			window.location = '/api/v1/social/login/facebook/?next=';
 		}
 	}
 })();

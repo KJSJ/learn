@@ -28,76 +28,66 @@ class PageView(APIView):
 		data = tempo.decode()
 
 		keyword = tempo.decode()
-		print (keyword)
+		print (keyword) #print user input
 
 		token = request.user.access_token
-		print (token)
+		print (token) #print user access token
 		graph = facebook.GraphAPI(token, version='2.2')
 		pagequery = graph.request("search",{'q': keyword,'type':'page'})
 		result = pagequery['data']
 
-		# def print_result(page):
-		# 	print(page['name'])
-
-		# while True:
-		# 	try:
-		# 		[print_result(page=page) for page in pagequery['data']]
-		# 		# Attempt to make a request to the next page of data, if it exists.
-		# 		posts = requests.get(pagequery['paging']['next']).json()
-		# 	except KeyError:
-		# 		break
-
-		return Response(result)
-
-
-	# def some_action(page):
-	#     print(page['name','id'] + ' ' + page['id'] )
-
-	# def pp(o):
-	# 	print json.dumps(o, indent=1)
-	# g = facebook.GraphAPI(ACCESS_TOKEN)
-
-	# social = user.social_auth.get(provider='facebook')
-	# ACCESS_TOKEN = social.extra_data['access_token']
-
-	# graph = facebook.GraphAPI['ACCESS_TOKEN']
-
-	# serializer_class = PageSerializer
+		result = result[:18] if len(result) > 18 else result
+		
+		new_results = []
+		base_url = 'https://graph.facebook.com/'
+		counter = 0
+		for index, data in enumerate(result):
+			pageID = data['id']
+			# print (pageID)
+			url = base_url + pageID
+			content = requests.get(url).json()
+			if content.get('error'):
+				pass
+			elif Pages.objects.all().filter(page_ID=pageID, spam=True): 
+				pass
+			else:
+				new_results.append(content)
+				Pages.objects.get_or_create(page_ID=pageID)
+				counter +=1
+				if counter >= 9:
+					break
+			
+		with open('test.json','w',encoding='utf-8') as io:
+			json.dump(new_results, io, indent=4)
 
 
+		ctxdict = {}
+		i = [j for j in range(26)]		
+		l = len(i)
+		first_col, second_col, third_col = [],[],[]
+		for index, item in enumerate(new_results):
+			if index %3 == 0:
+				first_col.append(item)
+			elif index % 3 == 1:
+				second_col.append(item)
+			else:
+				third_col.append(item)
+		ctxdict['first_col'] = first_col
+		ctxdict['second_col'] = second_col
+		ctxdict['third_col'] = third_col
 
 
+		return Response(ctxdict)
 
-# class PageViewSet(viewsets.APIView):
-# 	@strategy()
-# 	def auth_by_token(request, backend):
-# 		backend = request.strategy.backend
-# 		user=request.user
-# 		user = backend.do_auth(
-# 			access_token=request.DATA.get('access_token'),
-# 			user=user.is_authenticated() and user or None
-# 			)
-# 		if user and user.is_active:
-# 			return user# Return anything that makes sense here
-# 		else:
-# 			return None
-	                
-# 	@csrf_exempt
-# 	@api_view(['POST'])
-# 	@permission_classes((permissions.AllowAny,))
-# 	def social_register(request):
-# 		auth_token = request.DATA.get('access_token', None)
-# 		backend = request.DATA.get('backend', None)
-# 		if auth_token and backend:
-# 			try:
-# 				user = auth_by_token(request, backend)
-# 			except getopt.GetoptError as err:
-# 				return Response(str(err), status=400)
-# 			if user:
-# 				strategy = load_strategy(request=request, backend=backend)
-# 				_do_login(strategy, user)
-# 				return Response( "User logged in", status=status.HTTP_200_OK )
-# 			else:
-# 				return Response("Bad Credentials", status=403)
-# 		else:
-# 			return Response("Bad request", status=400)
+	def put(self, request, format=None):
+
+		tempo = request.body
+		data = tempo.decode()
+
+		id = data
+		page_ID = id
+		base_url = 'https://graph.facebook.com/'
+		url = base_url + id
+		content = requests.get(url).json()
+
+		return Response(content)		

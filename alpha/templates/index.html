@@ -39,6 +39,8 @@
 
 <script type="text/javascript" src="/static/javascripts/fbpage/fbpage.module.js"></script>
 <script type="text/javascript" src="/static/javascripts/fbpage/services/fbpage.service.js"></script>
+<script type="text/javascript" src="/static/javascripts/fbpage/controllers/graphsearch.controller.js"></script>
+<script type="text/javascript" src="/static/javascripts/fbpage/controllers/page.controller.js"></script>
 
 <script type="text/javascript" src="/static/javascripts/layout/layout.module.js"></script>
 <script type="text/javascript" src="/static/javascripts/layout/services/index.service.js"></script>
@@ -89,7 +91,7 @@
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Search Page..." id="query" name="query" ng-model="vm.keyword">
               <div class="input-group-btn">
-              <button type="submit" class="btn btn-success" ng-click="vm.search()"><span class="glyphicon glyphicon-search"></span></button>
+              <button type="submit" class="btn btn-success" ng-click="vm.redirect()"><span class="glyphicon glyphicon-search"></span></button>
               </div>
           </div> 
        </div>
@@ -99,12 +101,11 @@
           <!-- <li><a href="">Pages</a></li> !-->
         {% if user.is_authenticated %}
           <li><img src="{{ user.profile_picture }}" width="35" class="profilepic"/></li>
-          <li><a href="/+{{ user.username }}">{{ user.username }}</a></li>
+          <li><a href="">{{ user.username }}</a></li>
           <li><a href="/+{{ user.username }}/settings">Settings</a></li>
           <li><a href="javascript:void(0)" ng-click="vm.logout()">Logout</a></li>
         {% else %}
-          <li><a href="/login">Login</a></li> 
-          <li><a href="{% url 'social:begin' 'facebook' %}?next=">Login with Facebook</a></li>
+          <li><a href="javascript:void(0)" ng-click="vm.fblogin()"><img src="/static/facebook-login.png" class = "loginFB" width = "150"/></a></li>
          <!-- <li><a href="/register">Register</a></li> !-->
         {% endif %}
       </ul>
